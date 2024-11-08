@@ -9,5 +9,9 @@
           "js": ["content-script.js"],
           "css": ["style.css"]
         }
-    ]
+    ],
+    "web_accessible_resources": [{
+        "resources": ["lib/popper.min.js", "lib/tippy-bundle.umd.js"],
+        "matches": ["<all_urls>"]
+    }]
   }
