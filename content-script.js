@@ -6,11 +6,15 @@ const loadJobPosting = () => {
   const retry = setInterval(() => {
     // Unloaded job posting has innerText "About the job", which is 13 characters, but other languages might have more characters
     if (
-      (document.querySelector("#job-details")?.textContent?.replaceAll(' ', '').length ?? 0) >= 40
+      (document.querySelector("#job-details")?.textContent?.replaceAll(" ", "")
+        .length ?? 0) >= 40
     ) {
-      console.log("job-detials-text-content", document.querySelector("#job-details")?.textContent)
+      console.log(
+        "job-detials-text-content",
+        document.querySelector("#job-details")?.textContent
+      );
       clearInterval(retry);
-      processJobPosting();
+      void processJobPosting();
     }
   }, 200);
 };
@@ -18,29 +22,31 @@ const loadJobPosting = () => {
 const processJobPosting = async () => {
   jobPostingHTMLElement = document.querySelector("#job-details");
   console.log("HTML", jobPostingHTMLElement?.innerHTML);
-  
-  if (jobPostingHTMLElement?.innerHTML) {
-    const resp = await fetch("https://job-posting-red-flags-detector.siidorow.workers.dev", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        html: jobPostingHTMLElement.innerHTML,
-      })
 
-    })
-    
-    console.log(resp)
+  if (jobPostingHTMLElement?.innerHTML) {
+    const resp = await fetch(
+      "https://job-posting-red-flags-detector.siidorow.workers.dev",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          html: jobPostingHTMLElement.innerHTML,
+        }),
+      }
+    );
+
+    console.log(resp);
 
     if (!resp.ok) {
       console.error("Failed to fetch job posting", resp.statusText);
       return;
     }
 
-    const newHtml = await resp.text()
-    
-    console.log('new html', newHtml)
+    const newHtml = await resp.text();
+
+    console.log("new html", newHtml);
 
     jobPostingHTMLElement.innerHTML = newHtml;
 
