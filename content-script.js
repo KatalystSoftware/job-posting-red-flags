@@ -15,36 +15,53 @@ const loadJobPosting = () => {
 };
 
 const processJobPosting = () => {
-  console.log("Processing job posting");
   jobPostingHTMLElement = document.querySelector(".jobs-box__html-content");
   console.log("HTML", jobPostingHTMLElement?.innerHTML);
 
-  const description = jobPostingHTMLElement?.lastChild?.textContent;
-  const firstSentence = description?.split(".")[0];
+  if (jobPostingHTMLElement?.innerHTML) {
+    // AI generated HTML
+    const processedHTML =
+      "<span data-highlight data-type='error' data-description='!!!!!!!!!!!!' class='highlight-negative'>Lorem ipsum</span>" +
+      "<span data-highlight data-type='good' data-description='Nice!!' class='highlight-positive'>Lorem ipsum</span>" +
+      jobPostingHTMLElement.innerHTML;
 
-  console.log("First sentence", firstSentence);
+    jobPostingHTMLElement.innerHTML = processedHTML;
 
-  if (firstSentence) {
-    const highlight = createHighlight({ type: "note" });
-    jobPostingHTMLElement?.insertAdjacentElement("beforebegin", highlight);
-    highlight.innerText = "Lorem ipsum hello";
-
-    console.log("Highlight", highlight);
+    const highlights =
+      jobPostingHTMLElement.querySelectorAll("[data-highlight]");
+    highlights.forEach((highlight) => {
+      if (highlight instanceof HTMLElement) {
+        createHighlight(highlight);
+      }
+    });
   }
 };
 
+const validTypes = /** @type {const} */ (["good", "info", "warning", "error"]);
 /**
- *
- * @param {{
- *   type: "note" | "positive" | "negative",
- * }} options
+ * @param {HTMLElement} element
  */
-const createHighlight = (options) => {
-  const highlight = document.createElement("span");
-  highlight.classList.add("highlight");
-  highlight.classList.add(`highlight-${options.type}`);
-  window.tippy(highlight, { content: "Testing tippy" });
-  return highlight;
+const createHighlight = (element) => {
+  const hlType = element.dataset["type"];
+
+  const options = {
+    type: validTypes.includes(/** @type {typeof validTypes[number]} */ (hlType))
+      ? /** @type {typeof validTypes[number]} */ (hlType)
+      : "info",
+    description: element.dataset["description"] ?? "",
+  };
+
+  const emoji = {
+    good: "✅",
+    info: "ℹ️",
+    warning: "⚠️",
+    error: "❌",
+  };
+
+  const content = document.createElement("span");
+  content.innerHTML = `${emoji[options.type]} ${options.description}`;
+
+  window.tippy(element, { content });
 };
 
 const loadExtension = async () => {
