@@ -37,7 +37,12 @@ const processJobPosting = () => {
   }
 };
 
-const validTypes = /** @type {const} */ (["good", "info", "warning", "error"]);
+const validTypes = /** @type {const} */ ([
+  "positive",
+  "info",
+  "context",
+  "negative",
+]);
 /**
  * @param {HTMLElement} element
  */
@@ -52,10 +57,10 @@ const createHighlight = (element) => {
   };
 
   const emoji = {
-    good: "✅",
+    positive: "✅",
     info: "ℹ️",
-    warning: "⚠️",
-    error: "❌",
+    context: "⚠️",
+    negative: "❌",
   };
 
   const content = document.createElement("span");
