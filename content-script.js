@@ -6,7 +6,7 @@ const loadJobPosting = () => {
   const retry = setInterval(() => {
     // Unloaded job posting has innerText "About the job", which is 13 characters, but other languages might have more characters
     if (
-      (document.querySelector("#job-details")?.textContent?.length ?? 0) >= 40
+      (document.querySelector("#job-details")?.textContent?.replaceAll(' ', '').length ?? 0) >= 40
     ) {
       console.log("job-detials-text-content", document.querySelector("#job-details")?.textContent)
       clearInterval(retry);
