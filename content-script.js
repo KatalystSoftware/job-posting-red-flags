@@ -8,24 +8,41 @@ const loadJobPosting = () => {
     if (
       (document.querySelector("#job-details")?.textContent?.length ?? 0) >= 40
     ) {
+      console.log("job-detials-text-content", document.querySelector("#job-details")?.textContent)
       clearInterval(retry);
       processJobPosting();
     }
   }, 200);
 };
 
-const processJobPosting = () => {
+const processJobPosting = async () => {
   jobPostingHTMLElement = document.querySelector(".jobs-box__html-content");
   console.log("HTML", jobPostingHTMLElement?.innerHTML);
-
+  
   if (jobPostingHTMLElement?.innerHTML) {
-    // AI generated HTML
-    const processedHTML =
-      "<span data-highlight data-type='error' data-description='!!!!!!!!!!!!' class='highlight-negative'>Lorem ipsum</span>" +
-      "<span data-highlight data-type='good' data-description='Nice!!' class='highlight-positive'>Lorem ipsum</span>" +
-      jobPostingHTMLElement.innerHTML;
+    const resp = await fetch("https://job-posting-red-flags-detector.siidorow.workers.dev", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        html: jobPostingHTMLElement.innerHTML,
+      })
 
-    jobPostingHTMLElement.innerHTML = processedHTML;
+    })
+    
+    console.log(resp)
+
+    if (!resp.ok) {
+      console.error("Failed to fetch job posting", resp.statusText);
+      return;
+    }
+
+    const newHtml = await resp.text()
+    
+    console.log('new html', newHtml)
+
+    jobPostingHTMLElement.innerHTML = newHtml;
 
     const highlights =
       jobPostingHTMLElement.querySelectorAll("[data-highlight]");
