@@ -24,6 +24,7 @@ const processJobPosting = async () => {
   console.log("HTML", jobPostingHTMLElement?.innerHTML);
 
   if (jobPostingHTMLElement?.innerHTML) {
+    document.body.dataset["loadingJobAnnotations"] = "true";
     const resp = await fetch(
       "https://job-posting-red-flags-detector.siidorow.workers.dev",
       {
@@ -45,11 +46,11 @@ const processJobPosting = async () => {
     }
 
     const newHtml = await resp.text();
-
     console.log("new html", newHtml);
     console.log("succesfully added highlights");
 
     jobPostingHTMLElement.innerHTML = newHtml;
+    document.body.dataset["loadingJobAnnotations"] = "";
 
     const highlights =
       jobPostingHTMLElement.querySelectorAll("[data-highlight]");
@@ -97,6 +98,11 @@ const loadExtension = async () => {
   await import(window.chrome.runtime.getURL("./lib/popper.min.js"));
   await import(window.chrome.runtime.getURL("./lib/tippy-bundle.umd.js"));
   loadJobPosting();
+
+  const loadingIndicator = document.createElement("div");
+  loadingIndicator.id = "loading-indicator";
+  loadingIndicator.innerHTML = "Analyzing job posting...";
+  document.body.appendChild(loadingIndicator);
 };
 
 window.addEventListener("load", () => {
