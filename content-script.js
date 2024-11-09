@@ -11,7 +11,7 @@ const loadJobPosting = () => {
     ) {
       console.log(
         "job-detials-text-content",
-        document.querySelector("#job-details")?.textContent
+        document.querySelector("#job-details")?.textContent,
       );
       clearInterval(retry);
       void processJobPosting();
@@ -34,7 +34,7 @@ const processJobPosting = async () => {
         body: JSON.stringify({
           html: jobPostingHTMLElement.innerHTML,
         }),
-      }
+      },
     );
 
     console.log(resp);
@@ -47,7 +47,7 @@ const processJobPosting = async () => {
     const newHtml = await resp.text();
 
     console.log("new html", newHtml);
-    console.log('succesfully added highlights')
+    console.log("succesfully added highlights");
 
     jobPostingHTMLElement.innerHTML = newHtml;
 
@@ -103,20 +103,19 @@ window.addEventListener("load", () => {
   void loadExtension();
 });
 
-
 /** @type {string | null} */
-let perviousJobId = null
+let perviousJobId = null;
 
 window.navigation.addEventListener("navigate", () => {
   const urlParams = new URLSearchParams(window.location.search);
-  const currentJobId = urlParams.get('currentJobId');
+  const currentJobId = urlParams.get("currentJobId");
 
-  console.log('currentJobId', currentJobId)
+  console.log("currentJobId", currentJobId);
 
   if (perviousJobId === null || perviousJobId !== currentJobId) {
-    perviousJobId = currentJobId
+    perviousJobId = currentJobId;
     setTimeout(() => {
-      window.location.reload()
-    })
+      window.location.reload();
+    });
   }
 });
