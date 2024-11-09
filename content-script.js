@@ -16,7 +16,7 @@ const loadJobPosting = () => {
 };
 
 const processJobPosting = async () => {
-  jobPostingHTMLElement = document.querySelector(".jobs-box__html-content");
+  jobPostingHTMLElement = document.querySelector("#job-details");
   console.log("HTML", jobPostingHTMLElement?.innerHTML);
   
   if (jobPostingHTMLElement?.innerHTML) {
