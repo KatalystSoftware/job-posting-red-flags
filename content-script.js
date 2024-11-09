@@ -47,6 +47,7 @@ const processJobPosting = async () => {
     const newHtml = await resp.text();
 
     console.log("new html", newHtml);
+    console.log('succesfully added highlights')
 
     jobPostingHTMLElement.innerHTML = newHtml;
 
@@ -100,4 +101,22 @@ const loadExtension = async () => {
 
 window.addEventListener("load", () => {
   void loadExtension();
+});
+
+
+/** @type {string | null} */
+let perviousJobId = null
+
+window.navigation.addEventListener("navigate", () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const currentJobId = urlParams.get('currentJobId');
+
+  console.log('currentJobId', currentJobId)
+
+  if (perviousJobId === null || perviousJobId !== currentJobId) {
+    perviousJobId = currentJobId
+    setTimeout(() => {
+      window.location.reload()
+    })
+  }
 });
