@@ -1,1 +1,22 @@
-{}
+{
+  "name": "job-posting-red-flags",
+  "version": "1.0.0",
+  "scripts": {
+    "format": "prettier --write .",
+    "check": "tsc --noEmit",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.14.0",
+    "@tsconfig/strictest": "^2.0.5",
+    "@types/eslint__js": "^8.42.3",
+    "@types/node": "^22.9.0",
+    "eslint": "^9.14.0",
+    "chrome-types": "^0.1.318",
+    "globals": "^15.12.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.13.0"
+  },
+  "type": "module"
+}
