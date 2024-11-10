@@ -1,5 +1,4 @@
 {
-  "$schema": "https://json.schemastore.org/chrome-manifest",
   "manifest_version": 3,
   "name": "Hire Hazard",
   "description": "Scan job posting for critical information before applying. Uncovering Workplace Truths, One Flag at a Time.",
