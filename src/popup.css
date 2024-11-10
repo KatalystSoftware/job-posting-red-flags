@@ -50,6 +50,17 @@ body {
   text-align: center;
 }
 
+.btn-primary {
+  color: #3a31b2;
+  border-radius: 9999px;
+  background-color: #e9c1fe;
+  font-weight: 500;
+
+  &:hover {
+    background-color: hsla(279, 97%, 88%, 0.8);
+  }
+}
+
 .btn-select {
   border-radius: 9999px;
   border: 1px solid #e9c1fe;

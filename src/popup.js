@@ -135,6 +135,16 @@ const renderQuestion = (initialRender = false) => {
     };
     secondaryActionsEl.appendChild(skipButtonEl);
   }
+
+  if (currentPage === questions.length - 1) {
+    const doneButtonEl = document.createElement("button");
+    doneButtonEl.classList.add("btn", "btn-primary");
+    doneButtonEl.textContent = "Done";
+    doneButtonEl.onclick = () => {
+      window.close();
+    };
+    secondaryActionsEl.appendChild(doneButtonEl);
+  }
 };
 
 renderQuestion(true);
