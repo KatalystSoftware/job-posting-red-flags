@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+:where(button) {
+  all: unset;
+  font-family: inherit;
+  font-feature-settings: inherit;
+  font-variation-settings: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  text-transform: none;
+  appearance: none;
+  -webkit-appearance: button;
+  background-color: transparent;
+  background-image: none;
+  cursor: pointer;
+  background: none;
+  outline: inherit;
+
+  &:disabled {
+    cursor: default;
+  }
+}
+
+body {
+  background-color: #1a1a2e;
+  color: #e9c1fe;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.btn {
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.btn-select {
+  border-radius: 9999px;
+  border: 1px solid #e9c1fe;
+  color: #e9c1fe;
+  font-weight: 500;
+
+  &:hover {
+    background-color: hsla(280, 97%, 88%, 0.2);
+  }
+
+  &[aria-selected="true"] {
+    background-color: #3a31b2;
+    border: 1px solid #3a31b2;
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1rem;
+  width: 400px;
+  font-size: 1rem;
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .page-stepper {
+    display: flex;
+    gap: 0.5rem;
+
+    & > * {
+      border-radius: 9999px;
+      width: 0.5rem;
+      height: 0.5rem;
+      background-color: #3a31b2;
+
+      &[aria-current="step"] {
+        background-color: #e9c1fe;
+      }
+    }
+  }
+
+  .question {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    p {
+      font-size: 1.125rem;
+    }
+
+    div {
+      display: flex;
+      gap: 0.5rem;
+    }
+  }
+
+  .secondary-actions {
+    display: flex;
+    gap: 1rem;
+  }
+}
