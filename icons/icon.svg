@@ -1,0 +1,18 @@
+<svg width="201" height="192" viewBox="0 0 201 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.01562 52.8832L43.0157 52.9917" stroke="black" stroke-width="8" stroke-linecap="round"/>
+<path d="M4.01562 77.1396H90.0156" stroke="black" stroke-width="8" stroke-linecap="round"/>
+<path d="M4 101.872H54.0304" stroke="black" stroke-width="8" stroke-linecap="round"/>
+<path d="M4.01562 127H90.0156" stroke="black" stroke-width="8" stroke-linecap="round"/>
+<path d="M47.2109 49L93.0113 48.8832" stroke="#6445D5" stroke-width="12" stroke-linecap="round"/>
+<path d="M44.0156 77L93.0156 77.0049" stroke="#6445D5" stroke-width="12" stroke-linecap="round"/>
+<path d="M55.7314 105L93.011 104.744" stroke="#6445D5" stroke-width="12" stroke-linecap="round"/>
+<path d="M106.401 105.194L115.073 96.8998L131.661 114.245C133.57 116.24 133.499 119.406 131.503 121.314L130.058 122.696C128.062 124.605 124.897 124.534 122.989 122.539L106.401 105.194Z" fill="black" stroke="black" stroke-width="4"/>
+<circle cx="81.7243" cy="69.9862" r="44.84" transform="rotate(-43.7216 81.7243 69.9862)" stroke="black" stroke-width="8.68"/>
+<circle cx="81.7087" cy="70.6931" r="48" transform="rotate(-43.7216 81.7087 70.6931)" stroke="black" stroke-width="4"/>
+<circle cx="81.7243" cy="69.9862" r="38.6591" transform="rotate(-43.7216 81.7243 69.9862)" stroke="black" stroke-width="3.68182"/>
+<circle cx="81.7243" cy="69.9862" r="38.6591" transform="rotate(-43.7216 81.7243 69.9862)" fill="#D3A2FF" fill-opacity="0.38" stroke="black" stroke-width="3.68182"/>
+<mask id="path-13-inside-1_132_103" fill="white">
+<path d="M113.155 119.49C112.773 119.091 112.787 118.458 113.187 118.076L127.641 104.253C128.04 103.871 128.673 103.886 129.055 104.285L167.068 144.034C169.74 146.828 169.641 151.259 166.847 153.931L161.066 159.46C158.272 162.132 153.841 162.033 151.169 159.239L113.155 119.49Z"/>
+</mask>
+<path d="M113.155 119.49C112.773 119.091 112.787 118.458 113.187 118.076L127.641 104.253C128.04 103.871 128.673 103.886 129.055 104.285L167.068 144.034C169.74 146.828 169.641 151.259 166.847 153.931L161.066 159.46C158.272 162.132 153.841 162.033 151.169 159.239L113.155 119.49Z" fill="black" stroke="black" stroke-width="8" mask="url(#path-13-inside-1_132_103)"/>
+</svg>
