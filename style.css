@@ -1,19 +1,23 @@
-.highlight-positive {
+.highlight-positive,
+[data-highlight][data-type="positive"] {
   box-shadow: rgb(70 215 70) 0px 3px 0px 0px;
   background-color: rgb(88 255 113 / 27%);
 }
 
-.highlight-negative {
+.highlight-negative,
+[data-highlight][data-type="negative"] {
   box-shadow: 0px 3px 0 0 #ff0000;
   background-color: rgb(255 60 60 / 27%);
 }
 
-.highlight-info {
+.highlight-info,
+[data-highlight][data-type="info"] {
   box-shadow: 0px 3px 0 0 #007bff;
   background-color: rgb(60 60 255 / 27%);
 }
 
-.highlight-context {
+.highlight-context,
+[data-highlight][data-type="context"] {
   box-shadow: 0px 3px 0 0 #ffc107;
   background-color: rgb(255 193 60 / 27%);
 }
