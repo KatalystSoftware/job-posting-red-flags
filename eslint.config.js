@@ -18,6 +18,6 @@ export default tseslint.config(
     },
   },
   {
-    ignores: ["lib"],
+    ignores: ["src/lib/*.js"],
   },
 );

@@ -5,6 +5,7 @@
     "target": "ESNext",
     "moduleResolution": "Bundler"
   },
-  "include": ["node_modules/@types", "global.d.ts", "*.js"],
+  "include": ["node_modules/@types", "global.d.ts", "*.js", "src"],
+  "exclude": ["src/lib"],
   "extends": "@tsconfig/strictest"
 }
